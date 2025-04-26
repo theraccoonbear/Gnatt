@@ -1,0 +1,46 @@
+# === PEOPLE ===
+people:
+  alice: &alice Alice
+  bob:   &bob Bob
+  carol: &carol Carol
+  dan:   &dan Dan
+
+# === DURATION SCALE (Story Points + Euphemisms) ===
+durations:
+  coffee_break: &coffee_break 1    # "Just a quick one"
+  distraction:  &distraction 2      # "Shouldn't take long"
+  yak_shave:    &yak_shave 3       # "Why is this even a thing?"
+  rabbit_hole:  &rabbit_hole 5      # "Not hard, just a bit involved"
+  swamp_walk:   &swamp_walk 8       # "Starts easy, ends existential"
+  soul_eroder:  &soul_eroder 13     # "Why am I in tech again?"
+
+# === TASKS ===
+tasks:
+  - &wireframes
+    name: UI Wireframes
+    owner: *alice
+    duration: *swamp_walk
+    depends_on: []
+    start: 2025-05-01
+    completed_on: 2025-05-10
+
+  - &api
+    name: API Implementation
+    owner: *bob
+    duration: *rabbit_hole
+    depends_on: [*wireframes]
+    completed_on: null
+
+  - &db_setup
+    name: Database Setup
+    owner: *dan
+    duration: *yak_shave
+    depends_on: [*wireframes]
+    completed_on: null
+
+  - &qa
+    name: QA Pass
+    owner: *carol
+    duration: *distraction
+    depends_on: [*api, *db_setup]
+    completed_on: null
